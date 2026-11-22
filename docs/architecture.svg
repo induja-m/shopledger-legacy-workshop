@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1175" height="750" viewBox="0 0 1175 750" role="img" aria-labelledby="title">
+<title id="title">ShopLedger architecture and order flow</title>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#0e766e"/></marker></defs>
+<rect width="1175" height="750" fill="#edf6f4"/>
+<g font-family="sans-serif" fill="#142e36"><text x="35" y="63" font-size="36" font-weight="bold">ShopLedger architecture</text>
+<g stroke="#0e766e" stroke-width="2" fill="none" marker-end="url(#arrow)"><path d="M320 155H387"/><path d="M715 155H782"/><path d="M880 255V276H360V294"/><path d="M990 255V294"/><path d="M590 390H652"/></g>
+<rect x="35" y="100" width="285" height="125" rx="9" fill="#fff" stroke="#93b9b2"/>
+<text x="55" y="134" font-size="22" font-weight="bold">Browser UI</text>
+<text x="55" y="164" font-size="17">public/index.html</text>
+<text x="55" y="189" font-size="17">public/js/app.js</text>
+<text x="55" y="214" font-size="17">public/css/style.css</text>
+<rect x="395" y="100" width="320" height="125" rx="9" fill="#fff" stroke="#93b9b2"/>
+<text x="415" y="134" font-size="22" font-weight="bold">Express server</text>
+<text x="415" y="164" font-size="17">server.js</text>
+<text x="415" y="189" font-size="17">Static UI and /api routers</text>
+<text x="415" y="214" font-size="17">GET /orders/:id/invoice</text>
+<rect x="790" y="100" width="350" height="155" rx="9" fill="#fff" stroke="#93b9b2"/>
+<text x="810" y="134" font-size="22" font-weight="bold">Routers</text>
+<text x="810" y="164" font-size="17">routes/products.js</text>
+<text x="810" y="189" font-size="17">routes/orders.js</text>
+<text x="810" y="214" font-size="17">routes/customers.js</text>
+<text x="810" y="239" font-size="17">routes/reports.js</text>
+<rect x="35" y="302" width="555" height="180" rx="9" fill="#fff" stroke="#93b9b2"/>
+<text x="55" y="336" font-size="22" font-weight="bold">Business logic</text>
+<text x="55" y="366" font-size="17">lib/inventory.js  ·  lib/orders.js</text>
+<text x="55" y="391" font-size="17">lib/pricing.js  ·  lib/coupons.js  ·  lib/tax.js</text>
+<text x="55" y="416" font-size="17">lib/ledger.js  ·  lib/dates.js</text>
+<text x="55" y="441" font-size="17">lib/invoice.js  ·  lib/reports.js</text>
+<rect x="660" y="302" width="480" height="180" rx="9" fill="#fff" stroke="#93b9b2"/>
+<text x="680" y="336" font-size="22" font-weight="bold">Configuration and persistence</text>
+<text x="680" y="366" font-size="17">config.js  ·  GST, coupons, shop settings</text>
+<text x="680" y="391" font-size="17">lib/store.js  ·  read, write, audit</text>
+<text x="680" y="416" font-size="17">data/db.json  ·  products, orders, Khata</text>
+<rect x="35" y="525" width="1105" height="190" rx="9" fill="#fff" stroke="#93b9b2"/>
+<text x="55" y="559" font-size="22" font-weight="bold">Placing an order</text>
+<text x="55" y="589" font-size="17">1. Browser posts items and payment details to POST /api/orders.</text>
+<text x="55" y="614" font-size="17">2. Router reads the store, checks stock and coupon, and calculates pricing and GST.</text>
+<text x="55" y="639" font-size="17">3. Router charges Khata for credit orders, reserves inventory, and adds the order and audit entry.</text>
+<text x="55" y="664" font-size="17">4. Store writes data/db.json. Router returns HTTP 201 with the saved order.</text>
+</g></svg>
